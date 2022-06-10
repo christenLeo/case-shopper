@@ -35,6 +35,6 @@ const configService = new ConfigService();
     },
   })],
   controllers: [ ClientsController, OrdersController, ProductsController],
-  providers: [ ClientsService, ProductsService, OrdersService, ConfigService],
+  providers: [ ClientsService, ProductsService, OrdersService ],
 })
 export class AppModule {}

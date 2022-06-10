@@ -1,0 +1,13 @@
+POST http://localhost:3000/products
+Content-Type: application/json
+
+{
+    "id": "id_mock2",
+    "name": "name_mock2",
+    "price": 20.25,
+    "qty_stock": 34
+}
+###
+
+GET http://localhost:3000/products
+Content-Type: application/json
