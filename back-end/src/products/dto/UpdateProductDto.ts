@@ -1,3 +1,7 @@
-import { CreateProductDto } from "./CreateProductDto";
+export interface UpdateProductStockDto {
+    qty_stock: number;
+};
 
-export interface UpdateProductDto extends CreateProductDto {};
+export interface UpdateProductPriceDto {
+    price: number;
+};
