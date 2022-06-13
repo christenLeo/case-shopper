@@ -10,6 +10,7 @@ import { ProductsController } from './products/products.controller';
 import { ClientsModule } from './clients/clients.module';
 import { OrdersModule } from './orders/orders.module';
 import { ProductsModule } from './products/products.module';
+import { IdGenerator } from './middlewares/IdGenerator';
 
 const configService = new ConfigService();
 
@@ -35,6 +36,6 @@ const configService = new ConfigService();
     },
   })],
   controllers: [ ClientsController, OrdersController, ProductsController],
-  providers: [ ClientsService, ProductsService, OrdersService ],
+  providers: [ ClientsService, ProductsService, OrdersService, IdGenerator ],
 })
 export class AppModule {}
