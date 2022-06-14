@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { Knex } from 'knex';
 import { InjectModel } from 'nest-knexjs';
 import { Product } from './interfaces/products.interface';
@@ -16,8 +16,22 @@ export class ProductsService {
         return products;
     };
 
+    async getProductById(id:string):Promise<Product>{
+        const product: Product[] = await this.connection(this.table).where({id});
+
+        if (!product[0]) throw new HttpException('Product not found, please check if you passed a valid product id', HttpStatus.NOT_FOUND);
+
+        return product[0];
+    };
+
     async createProduct(product: Product):Promise<void>{
-        await this.connection(this.table).insert(product);
+        const {id, name, price, qty_stock, img_url} = product;
+
+        if (!id || !name || !price || !qty_stock || !img_url) {
+            throw new HttpException('Verify the fields: name, price, qty_stock and img_url, all of them must be filled', HttpStatus.BAD_REQUEST);
+        }
+
+        return await this.connection(this.table).insert(product);
     };
 
     async updateProductStock(id:string, qty_stock:number):Promise<void>{
@@ -29,6 +43,12 @@ export class ProductsService {
     };
 
     async deleteProduct(id: string){
-        await this.connection(this.table).where({id}).delete();
+        const product: Product = await this.getProductById(id);
+
+        if (!product) {
+            throw new HttpException('Product not found, please check if you passed a valid product id', HttpStatus.NOT_FOUND);
+        }    
+        
+        return await this.connection(this.table).where({id}).delete();
     };
 }
