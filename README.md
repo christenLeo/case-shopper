@@ -1,35 +1,31 @@
-# 🎯 Case Shopper - Orders application / BACK-END
+# 🎯 Case Shopper - Orders application
 
-This app do the data base saving part of the project, and handle three entities (
- two *non-human*: **products** and **orders**;
- one *human*: **clients** ), and the relations between them.
+This app was built to make groceries, linking a client to an order of products and setting a deliver date to that.
 
 ## 🚀 Author
 - [@christenLeo](https://github.com/christenLeo)
 
-
-
 ## 📄 Stack
 
+#### BACK_END
  - Typescript
  - Node.js
  - Nestjs
  
  **Libs**
- - uuid
- - dotenv
- - express
- - knex
+ - Uuid
+ - Dotenv
+ - Express
+ - Knex
 
+#### FRONT_END
+ - Javascript
+ - HTML5
+ - CSS3
+ - React.js
 
-## 🚏 Funcionalities
-
-- CRUD for the three entities
-
-## 🎳 Link from heroku
-- https://case-shopper-leona.herokuapp.com/clients
-- https://case-shopper-leona.herokuapp.com/products
-- https://case-shopper-leona.herokuapp.com/orders
-
-## 🧾 Postman documentation
-- 
+ **libs**
+ - Axios
+ - React-hook-form
+ - Styled-components
+ - Materuial-ui / React.js
