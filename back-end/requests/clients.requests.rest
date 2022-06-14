@@ -1,0 +1,27 @@
+POST http://localhost:3000/clients
+Content-Type: application/json
+
+{
+    "name": "name_mock",
+    "email": "email_mock@mock.com",
+    "address": "rua mock / 255 / bairro mock"
+}
+###
+GET http://localhost:3000/clients
+Content-Type: application/json
+
+###
+GET http://localhost:3000/clients/c5811ff5-01d3-48b7-b396-030775b1cbd8
+Content-Type: application/json
+
+###
+PUT http://localhost:3000/clients/c5811ff5-01d3-48b7-b396-030775b1cbd8/address
+Content-Type: application/json
+
+{
+    "address": "sla sra que foi? / 324/ uhull "
+}
+
+###
+DELETE http://localhost:3000/clients/delete/c5811ff5-01d3-48b7-b396-030775b1cbd8
+Content-Type: application/json

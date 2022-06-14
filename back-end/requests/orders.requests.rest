@@ -1,0 +1,30 @@
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+    "client_id": "f9697e8d-c6f1-43aa-9fcc-cb84e06e1722",
+    "product_id":"id_moc",
+    "product_qty":"20",
+    "total_value":"200.35",
+    "deliver_date":"2020-12-20"
+}
+###
+GET http://localhost:3000/orders
+Content-Type: application/json
+
+###
+GET http://localhost:3000/orders/2fe2aaf8-5841-45da-9653-8043d85acd46
+Content-Type: application/json
+
+###
+PUT http://localhost:3000/orders/2fe2aaf8-5841-45da-9653-8043d85acd46
+Content-Type: application/json
+
+{
+    "product_qty": 205,
+    "total_value": 20.98
+}
+
+###
+DELETE http://localhost:3000/orders/delete/2fe2aaf8-5841-45da-9653-8043d85acd46
+Content-Type: application/json

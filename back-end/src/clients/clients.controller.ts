@@ -37,12 +37,12 @@ export class ClientsController {
     return this.clientsService.findOne(id);
   }
 
-  @Put(':id')
+  @Put(':id/address')
   updateAddress(@Param('id') id: string, @Body() input: UpdateClientAddressDto):Promise<string>{
     return this.clientsService.updateAddress(id, input);
   }
 
-  @Delete(':id')
+  @Delete('delete/:id')
   remove(@Param('id') id: string):Promise<string>{
     return this.clientsService.remove(id);
   }

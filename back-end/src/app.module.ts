@@ -6,6 +6,7 @@ import { ProductsController } from './products/products.controller';
 import { ProductsModule } from './products/products.module';
 import { IdGenerator } from './middlewares/IdGenerator';
 import { ClientsModule } from './clients/clients.module';
+import { OrdersModule } from './orders/orders.module';
 
 const configService = new ConfigService();
 
@@ -28,7 +29,8 @@ const configService = new ConfigService();
       },
     },
   }),
-    ClientsModule],
+    ClientsModule,
+    OrdersModule],
   controllers: [ ProductsController],
   providers: [ ProductsService, IdGenerator ],
 })
