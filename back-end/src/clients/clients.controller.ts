@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common'
 import { IdGenerator } from 'src/middlewares/IdGenerator';
 import { ClientsService } from './clients.service';
 import { CreateClientDto } from './dto/create-client.dto';
-import { UpdateClientDto } from './dto/update-client.dto';
+import { UpdateClientAddressDto } from './dto/update-client.dto';
 import { Client } from './entities/client.entity';
 
 @Controller('clients')
@@ -13,7 +13,7 @@ export class ClientsController {
   ) {}
 
   @Post()
-  create(@Body() createClientDto: CreateClientDto) {
+  create(@Body() createClientDto: CreateClientDto):Promise<string>{
     const {name, email, address} = createClientDto;
     const id: string = this.idGenerator.generateId();
 
@@ -28,22 +28,22 @@ export class ClientsController {
   }
 
   @Get()
-  findAll() {
+  findAll():Promise<Client[]>{
     return this.clientsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.clientsService.findOne(+id);
+  findOne(@Param('id') id: string):Promise<Client>{
+    return this.clientsService.findOne(id);
   }
 
   @Put(':id')
-  updateAddress(@Param('id') id: string, @Body() updateClientDto: UpdateClientDto) {
-    return this.clientsService.update(+id, updateClientDto);
+  updateAddress(@Param('id') id: string, @Body() input: UpdateClientAddressDto):Promise<string>{
+    return this.clientsService.updateAddress(id, input);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.clientsService.remove(+id);
+  remove(@Param('id') id: string):Promise<string>{
+    return this.clientsService.remove(id);
   }
 }

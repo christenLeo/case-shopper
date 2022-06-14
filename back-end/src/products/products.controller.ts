@@ -25,7 +25,7 @@ export class ProductsController {
     };
 
     @Post()
-    createProduct(@Body() input: CreateProductDto): Promise<void>{
+    createProduct(@Body() input: CreateProductDto): Promise<string>{
         const {name, price, qty_stock, img_url} = input;
         const id = this.idGenerator.generateId();
 
@@ -41,21 +41,19 @@ export class ProductsController {
     };
 
     @Put('stock/:id')
-    updateProductStock(@Param('id') id:string, @Body() input:UpdateProductStockDto):string{
+    updateProductStock(@Param('id') id:string, @Body() input:UpdateProductStockDto):Promise<string>{
         const {qty_stock} = input;
-        this.productsService.updateProductStock(id, qty_stock);
-        return 'Stock quantity updated';
+        return this.productsService.updateProductStock(id, qty_stock);
     };
     
     @Put('price/:id')
-    updateProductPrice(@Param('id') id:string, @Body() input:UpdateProductPriceDto):string{
+    updateProductPrice(@Param('id') id:string, @Body() input:UpdateProductPriceDto):Promise<string>{
         const {price} = input;
-        this.productsService.updateProductPrice(id, price);
-        return 'Price updated';
+        return this.productsService.updateProductPrice(id, price);
     };
 
     @Delete('delete/:id')
-    deleteProduct(@Param('id') id:string): Promise<number>{
+    deleteProduct(@Param('id') id:string): Promise<string>{
         return this.productsService.deleteProduct(id);
     };
 }
