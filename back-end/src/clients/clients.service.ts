@@ -15,7 +15,7 @@ export class ClientsService {
     const {id, name, email, address} = client;
 
     if (!id || !name || !email || !address) {
-        throw new HttpException('Verify the fields: name, price, email and address, all of them must be filled', HttpStatus.BAD_REQUEST);
+        throw new HttpException('Verify the fields: name, email and address, all of them must be filled', HttpStatus.BAD_REQUEST);
     }
 
     await this.connection(this.table).insert(client);
