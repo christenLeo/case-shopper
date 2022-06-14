@@ -11,6 +11,10 @@ GET http://localhost:3000/products
 Content-Type: application/json
 
 ###
+GET http://localhost:3000/products/id_moc
+Content-Type: application/json
+
+###
 PUT http://localhost:3000/products/stock/cb7e6bf1-5a4f-4cfc-a4c5-2d3c11f35497
 Content-Type: application/json
 
@@ -27,5 +31,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/products/delete/cb7e6bf1-5a4f-4cfc-a4c5-2d3c11f35497
+DELETE http://localhost:3000/products/delete/id_moc
 Content-Type: application/json

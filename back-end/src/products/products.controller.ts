@@ -17,20 +17,27 @@ export class ProductsController {
         return this.productsService.getProducts();
     };
 
+    @Get(':id')
+    getProductById(@Param('id')id:string):Promise<Product>{
+        const product: Promise<Product> = this.productsService.getProductById(id);
+
+        return product;
+    };
+
     @Post()
-    createProduct(@Body() input: CreateProductDto):string{
-        const {name, price, qty_stock} = input;
+    createProduct(@Body() input: CreateProductDto): Promise<void>{
+        const {name, price, qty_stock, img_url} = input;
         const id = this.idGenerator.generateId();
 
         const product: Product = {
             id,
             name,
             price,
-            qty_stock
+            qty_stock,
+            img_url
         };
 
-        this.productsService.createProduct(product);
-        return 'Product registered successfully';
+        return this.productsService.createProduct(product);
     };
 
     @Put('stock/:id')
@@ -48,8 +55,7 @@ export class ProductsController {
     };
 
     @Delete('delete/:id')
-    deleteProduct(@Param('id') id:string):string{
-        this.productsService.deleteProduct(id);
-        return 'Product deleted';
+    deleteProduct(@Param('id') id:string): Promise<number>{
+        return this.productsService.deleteProduct(id);
     };
 }

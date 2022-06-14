@@ -1,23 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { KnexModule } from 'nest-knexjs';
-import { ClientsService } from './clients/clients.service';
 import { ProductsService } from './products/products.service';
-import { OrdersService } from './orders/orders.service';
-import { ClientsController } from './clients/clients.controller';
-import { OrdersController } from './orders/orders.controller';
 import { ProductsController } from './products/products.controller';
-import { ClientsModule } from './clients/clients.module';
-import { OrdersModule } from './orders/orders.module';
 import { ProductsModule } from './products/products.module';
 import { IdGenerator } from './middlewares/IdGenerator';
 
 const configService = new ConfigService();
 
 @Module({
-  imports: [
-    ClientsModule,
-    OrdersModule, 
+  imports: [ 
     ProductsModule, 
     ConfigModule.forRoot(
       {isGlobal: true}
@@ -35,7 +27,7 @@ const configService = new ConfigService();
       },
     },
   })],
-  controllers: [ ClientsController, OrdersController, ProductsController],
-  providers: [ ClientsService, ProductsService, OrdersService, IdGenerator ],
+  controllers: [ ProductsController],
+  providers: [ ProductsService, IdGenerator ],
 })
 export class AppModule {}
