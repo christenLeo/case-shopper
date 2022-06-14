@@ -10,26 +10,26 @@ This app do the data base saving part of the project, and handle three entities 
 - CRUD for the three entities
 
 ## 🎳 Link from heroku
-- https://case-shopper-leona.herokuapp.com/clients
+- 📦https://case-shopper-leona.herokuapp.com/clients
 - https://case-shopper-leona.herokuapp.com/products
 - https://case-shopper-leona.herokuapp.com/orders
 
 ## 🧾 Postman documentation
 - 
 
-## Environment variables
+## 🔑 Environment variables
 - DB_HOST =
 - DB_USER =
 - DB_NAME = 
 - DB_PASS =
 
-## Installation
+## 📦 Installation
 
 ```bash
 $ npm install
 ```
 
-## Running the app
+## 🏇🏽 Running the app
 
 ```bash
 # development
@@ -42,7 +42,7 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-## Test
+## 🛠 Test
 
 ```bash
 # unit tests
