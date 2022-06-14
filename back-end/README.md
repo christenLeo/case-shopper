@@ -10,7 +10,7 @@ This app do the data base saving part of the project, and handle three entities 
 - CRUD for the three entities
 
 ## 🎳 Link from heroku
-- 📦https://case-shopper-leona.herokuapp.com/clients
+- https://case-shopper-leona.herokuapp.com/clients
 - https://case-shopper-leona.herokuapp.com/products
 - https://case-shopper-leona.herokuapp.com/orders
 
