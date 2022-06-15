@@ -24,15 +24,17 @@ export class ProductsService {
         return product[0];
     };
 
-    async createProduct(product: Product):Promise<void>{
+    async createProduct(product: Product):Promise<string>{
         const {id, name, price, qty_stock, img_url} = product;
 
         if (!id || !name || !price || !qty_stock || !img_url) {
             throw new HttpException('Verify the fields: name, price, qty_stock and img_url, all of them must be filled', HttpStatus.BAD_REQUEST);
         }
 
-        return await this.connection(this.table).insert(product);
+        await this.connection(this.table).insert(product);
+        return 'Product created';
     };
+
 
     async updateProductStock(id:string, qty_stock:number):Promise<void>{
         const product: Product = await this.getProductById(id);
@@ -42,7 +44,9 @@ export class ProductsService {
         }    
         
         await this.connection(this.table).where({id}).update({qty_stock});
+        return 'Stock updated';
     };
+
 
     async updateProductPrice(id:string, price:number):Promise<void>{
         const product: Product = await this.getProductById(id);
@@ -52,15 +56,17 @@ export class ProductsService {
         }    
 
         await this.connection(this.table).where({id}).update({price});
+        return 'Price update';
     };
 
-    async deleteProduct(id: string){
+    async deleteProduct(id: string):Promise<string>{
         const product: Product = await this.getProductById(id);
 
         if (!product) {
             throw new HttpException('Product not found, please check if you passed a valid product id', HttpStatus.NOT_FOUND);
         }    
         
-        return await this.connection(this.table).where({id}).delete();
+        await this.connection(this.table).where({id}).delete();
+        return 'Product deleted';
     };
 }
