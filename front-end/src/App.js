@@ -1,10 +1,16 @@
+import { GlobalState } from './Global/GlobalState.js';
+import { HomePage } from './Pages/HomePage/HomePage.js';
+import { HolePage } from './styled.js';
+
 import React from "react";
 
 const App = () => {
   return (
-    <>
-      <h1>Lets bora??</h1>
-    </>
+    <GlobalState>
+      <HolePage>
+        <HomePage/>
+      </HolePage>  
+    </GlobalState>
   );
 };
 

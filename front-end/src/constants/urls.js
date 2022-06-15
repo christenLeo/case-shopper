@@ -1,0 +1,1 @@
+export const BASE_URL = 'https://case-shopper-leona.herokuapp.com/';
