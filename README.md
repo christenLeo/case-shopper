@@ -30,5 +30,6 @@ This app was built to make groceries, linking a client to an order of products a
  **libs**
  - Axios
  - React-hook-form
+ - React-popup
  - Styled-components
  - Materuial-ui / React.js
