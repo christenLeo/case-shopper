@@ -57,6 +57,10 @@ export class OrdersService {
 
     if (!total_value || !product_qty) throw new HttpException('Please check if you have passed a new value and product quatity', HttpStatus.BAD_REQUEST);
 
+    const order: Order = await this.findOne(id);
+
+    if (!order) throw new HttpException('Order not found, please check if you passed a valid client id', HttpStatus.NOT_FOUND);
+
     await this.connection(this.table).where({id}).update({total_value, product_qty});
 
     return `Product quantity and total value changed`;
