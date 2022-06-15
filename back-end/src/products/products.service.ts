@@ -35,12 +35,26 @@ export class ProductsService {
         return 'Product created';
     };
 
-    async updateProductStock(id:string, qty_stock:number):Promise<string>{
+
+    async updateProductStock(id:string, qty_stock:number):Promise<void>{
+        const product: Product = await this.getProductById(id);
+
+        if (!product) {
+            throw new HttpException('Product not found, please check if you passed a valid product id', HttpStatus.NOT_FOUND);
+        }    
+        
         await this.connection(this.table).where({id}).update({qty_stock});
         return 'Stock updated';
     };
 
-    async updateProductPrice(id:string, price:number):Promise<string>{
+
+    async updateProductPrice(id:string, price:number):Promise<void>{
+        const product: Product = await this.getProductById(id);
+
+        if (!product) {
+            throw new HttpException('Product not found, please check if you passed a valid product id', HttpStatus.NOT_FOUND);
+        }    
+
         await this.connection(this.table).where({id}).update({price});
         return 'Price update';
     };
