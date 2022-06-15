@@ -15,7 +15,7 @@ This app do the data base saving part of the project, and handle three entities 
 - https://case-shopper-leona.herokuapp.com/orders
 
 ## 🧾 Postman documentation
-- 
+- https://documenter.getpostman.com/view/19296902/UzBiQ9XZ
 
 ## 🔑 Environment variables
 - DB_HOST =
