@@ -39,6 +39,10 @@ export class ClientsService {
 
     if (!address) throw new HttpException('Please check if you have passed a address', HttpStatus.BAD_REQUEST);
 
+    const client: Client = await this.findOne(id);
+  
+    if (!client) throw new HttpException('Client not found, please check if you passed a valid client id', HttpStatus.NOT_FOUND);
+
     await this.connection(this.table).where({id}).update({address});
     return 'Client address updated';
   };
