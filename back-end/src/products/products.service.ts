@@ -36,7 +36,7 @@ export class ProductsService {
     };
 
 
-    async updateProductStock(id:string, qty_stock:number):Promise<void>{
+    async updateProductStock(id:string, qty_stock:number):Promise<string>{
         const product: Product = await this.getProductById(id);
 
         if (!product) {
@@ -48,7 +48,7 @@ export class ProductsService {
     };
 
 
-    async updateProductPrice(id:string, price:number):Promise<void>{
+    async updateProductPrice(id:string, price:number):Promise<string>{
         const product: Product = await this.getProductById(id);
 
         if (!product) {
