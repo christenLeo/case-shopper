@@ -5,7 +5,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
-export const ProductCard = (props) => {
+export const CartCard = (props) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
