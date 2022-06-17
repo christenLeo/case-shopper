@@ -52,14 +52,57 @@ export const GlobalState = (props) => {
     };
 
     // Cart
-    const addToCart = (product) => {
+    const updateTotalValue = () => {
+        let newTotalValue = totalValue;
+        cart.forEach((item)=>{
+            newTotalValue += Number(item.price);
+        });
+        setTotalValue(newTotalValue);
+    };
 
-        const prodInCart = {
-            product_id: product.id
-        };
+    const addToCart = (productId) => {
+        const productInCart = cart.find(item=> item.id === productId)
 
-        
+        if (productInCart) {
+            const newCart = cart.map((item)=>{
+                if (productId === item.id) {
+                    return {
+                        ...item,
+                        product_qty: item.product_qty + 1,
+                        total_value: (Number(item.price) * Number(item.product_qty+1))
+                    };
+                }
+                return item;
+            });
+            setCart(newCart);
+        }
+        else {
+            const newProduct = products.find(item=>productId===item.id);
+            const newCart = [
+                ...cart,
+                {
+                    ...newProduct, 
+                    product_qty: 1, 
+                    total_value: Number(newProduct.price)
+                }
+            ];
+            setCart(newCart);
+        }
+        updateTotalValue();
+    };
 
+    const removeFromCart = (productId) => {
+        const newCart = cart.map((item) => {
+          if (item.id === productId) {
+            return {
+              ...item,
+              product_qty: item.product_qty - 1,
+              total_value: (Number(item.price) * Number(item.product_qty)).toFixed(2)
+            };
+          }
+          return item;
+        }).filter((item) => item.product_qty > 0);
+        setCart(newCart);
     };
 
     const value = {
@@ -72,7 +115,11 @@ export const GlobalState = (props) => {
         clients,
         orders,
         changeFilterText,
-        filterText
+        filterText,
+        addToCart,
+        removeFromCart,
+        cart,
+        totalValue
     };
 
     return (
@@ -80,4 +127,4 @@ export const GlobalState = (props) => {
             {props.children}
         </GlobalContext.Provider>
     );
-};
+    }
