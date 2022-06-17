@@ -9,11 +9,29 @@ export const GlobalState = (props) => {
     const [clients, setClients] = useState([]);
     const [orders, setOrders] = useState([]);
     const [filterText, setFilterText] = useState('');
+    const [cart, setCart] = useState([]);
+    const [totalValue, setTotalValue] = useState(0);
 
     // Products 
     const getAllProducts = async () => {
         const result = await makeRequest('get', `${BASE_URL}products`);
         setProducts(result);
+    };
+
+    const createProduct = async (data, close) => {
+        const {name, price, qty_stock, img_url} = data;
+        const product = {
+            name,
+            price: Number(price),
+            qty_stock: Number(qty_stock),
+            img_url
+        };
+
+        const res = await makeRequest('post', `${BASE_URL}products`, product);
+
+        console.log(res);
+
+        close();
     };
 
     // Clients
@@ -33,9 +51,21 @@ export const GlobalState = (props) => {
         setFilterText(evt.target.value);
     };
 
+    // Cart
+    const addToCart = (product) => {
+
+        const prodInCart = {
+            product_id: product.id
+        };
+
+        
+
+    };
+
     const value = {
         isLoading,
-        getAllProducts, 
+        getAllProducts,
+        createProduct, 
         getAllClients, 
         getAllOrders, 
         products,
