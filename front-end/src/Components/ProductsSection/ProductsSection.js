@@ -1,5 +1,8 @@
+import { Button } from "@mui/material";
 import React, { useContext, useEffect } from "react"
+import Popup from "reactjs-popup";
 import { GlobalContext } from "../../Global/GlobalContext";
+import { CreateProductForm } from "../CreateProductForm/CreateProductForm";
 import { ProductCard } from "../ProductCard/ProductCard.js";
 
 export const ProductsSection = () => {
@@ -10,20 +13,24 @@ export const ProductsSection = () => {
     }, [products]);
 
     const mountProducts = products.filter((product) => {
-        if (product.name.toLowerCase() === filterText.toLowerCase()) {
+        if (product.name.toLowerCase().includes(filterText.toLowerCase())) {
             return product;
         }
-        return product;
     }).map((product) => {
         return (
             <li key={product.id}>
-                <ProductCard/>
+                <ProductCard name={product.name} price={product.price} stock={product.qty_stock} image={product.img_url}/>
             </li>
         );
     });
 
     return (
         <section>
+            <Popup position={"bottom left"} trigger={<Button variant="outlined">Insert new product</Button>}>
+                {close => (
+                    <CreateProductForm close={close}/>
+                )}
+            </Popup>
             <ul>
                 {mountProducts}
             </ul>
