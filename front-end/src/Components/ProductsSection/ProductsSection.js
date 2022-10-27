@@ -19,7 +19,13 @@ export const ProductsSection = () => {
     }).map((product) => {
         return (
             <li key={product.id}>
-                <ProductCard name={product.name} price={product.price} stock={product.qty_stock} image={product.img_url}/>
+                <ProductCard
+                    productId={product.id} 
+                    name={product.name} 
+                    price={product.price} 
+                    stock={product.qty_stock} 
+                    image={product.img_url} 
+                />
             </li>
         );
     });

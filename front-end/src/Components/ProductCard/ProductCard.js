@@ -4,8 +4,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActions, IconButton } from '@mui/material';
+import { GlobalContext } from '../../Global/GlobalContext';
 
 export const ProductCard = (props) => {
+  const {addToCart, cart} = React.useContext(GlobalContext);
+
   return (
     <Card sx={{ maxWidth: 400, margin: '2rem'}}>
       <div style={{display: 'flex', alignItems: 'center'}}>
@@ -33,7 +36,7 @@ export const ProductCard = (props) => {
         </CardContent>
       </div>
       <CardActions sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-        <Button  sx={{width: '90%'}} variant={'contained'} size="large" color="primary">
+        <Button onClick={()=>{addToCart(props.productId); console.log(cart)}} sx={{width: '90%'}} variant={'contained'} size="large" color="primary">
           Add to cart
         </Button>
       </CardActions>
