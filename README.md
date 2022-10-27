@@ -5,8 +5,6 @@ This app was built to make groceries, linking a client to an order of products a
 ## 🚀 Author
 - [@christenLeo](https://github.com/christenLeo)
 
-## 🕹 Link to test the app
-- https://case-shopper-leona.surge.sh
 
 ## 📄 Stack
 
